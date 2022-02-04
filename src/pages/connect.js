@@ -27,20 +27,15 @@ export default function Connect(){
     const [publicKey, setPublicKey] = useState("");
     const [network, setNetwork] = useState("");
     
-    useEffect(() => {
-        connectTo(isKlaytnInstalled, setPublicKey);
-        setNetwork(getNetworkName(klaytn.networkVersion));
-        klaytn.on('accountsChanged', accounts => {
-            alert("지갑 주소가 변경 되었습니다.");
-            setPublicKey(accounts[0]);
-        });
-    }, []);
-
     return (
-        <div className="connect-div">
-            <h1>Connect</h1>
-            <p> 지갑 연결 정보</p>
-            <div className="status-div">
+        <div className="connectPage">
+            <div className="connectPage__title">
+                <h1>Connect</h1>
+            </div>
+            <div className="connectPage__subtitle"> 
+                Kaikas 지갑 연결 정보
+            </div>
+            <div className="connectPage__content">
                 <ul>
                     <li>
                         Kaikas 지갑 설치여부 :&nbsp; { status }
@@ -53,7 +48,7 @@ export default function Connect(){
                     </li>
                 </ul>
             </div>
-            <div>
+            <div className="connectPage__btnbar">
                 <button onClick={() => connectTo(status, setPublicKey)}>지갑 연동하기</button>
             </div>
         </div>

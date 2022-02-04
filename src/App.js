@@ -5,6 +5,8 @@ import {
   Route
 } from 'react-router-dom'
 
+import './App.css'
+
 import Navbar from "./components/navbar"
 
 import Connect from './pages/connect'
@@ -16,12 +18,14 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Connect/>} />
-        <Route path="/cats" element={<Cats/>} />
-        <Route path="/sheeps" element={<Sheeps/>} />
-        <Route path="/goats" element={<Goats/>} />
-      </Routes>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Connect/>} />
+          <Route path="/cats" element={<Cats/>} />
+          <Route path="/sheeps" element={<Sheeps/>} />
+          <Route path="/goats" element={<Goats/>} />
+        </Routes>
+    </div>
     </BrowserRouter>
   );
 }

@@ -10,10 +10,10 @@ export default function navbar () {
                 <Link to="/profile">Profile</Link>
             </li>
             <li>
-                <Link to="/sheeps">Explorer</Link>
+                <Link to="/sheeps">Collection</Link>
             </li>
             <li>
-                <Link to="/goats">Supports</Link>
+                <Link to="/goats">Explorer</Link>
             </li>
         </nav>
     )
