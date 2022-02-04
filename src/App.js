@@ -7,12 +7,9 @@ import {
 
 import './App.css'
 
-import Navbar from "./components/navbar"
+import Navbar from "./components/Navbar"
 
-import Connect from './pages/connect'
-import Cats from './pages/cats'
-import Sheeps from './pages/sheeps'
-import Goats from './pages/goats'
+import Connect from './pages/Connect'
 
 function App() {
   return (
@@ -21,9 +18,6 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Connect/>} />
-          <Route path="/cats" element={<Cats/>} />
-          <Route path="/sheeps" element={<Sheeps/>} />
-          <Route path="/goats" element={<Goats/>} />
         </Routes>
     </div>
     </BrowserRouter>

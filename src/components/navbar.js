@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
-import './navbars.css'
-export default function navbar () {
+import './Navbars.css'
+export default function Navbar () {
     return (
-        <nav className="navbar">
+        <nav className="Navbar">
             <li>
                 <Link to="/">Connect</Link>
             </li>
@@ -10,10 +10,10 @@ export default function navbar () {
                 <Link to="/profile">Profile</Link>
             </li>
             <li>
-                <Link to="/sheeps">Collection</Link>
+                <Link to="/Collection">Collection</Link>
             </li>
             <li>
-                <Link to="/goats">Explorer</Link>
+                <Link to="/Explorer">Explorer</Link>
             </li>
         </nav>
     )

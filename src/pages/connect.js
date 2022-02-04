@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import './connect.css'
+import './Connect.css'
+import Button from '../components/Button'
 
 async function connectTo(isKlaytnInstalled, setPublicKey) {
     if(!isKlaytnInstalled) {
@@ -20,13 +21,21 @@ const getNetworkName = code => {
     }
 };
 
-export default function Connect(){
+export default function Connect() {
+    // todo - Kaikas 지갑이 설치 되지 않았을 경우, 체크하는 로직을 넣어 정상적으로 연결되지 않음이라는 메세지가 렌더링 되도록 수정
     const { klaytn } = window;
-    const isKlaytnInstalled = typeof klaytn !== 'undefined';
-    const status = isKlaytnInstalled ? <span className="green">설치됨</span> : <span className="red">설치 안됨</span> 
+    const isKlaytnInstalled = klaytn.isKaikas;
+    let status = isKlaytnInstalled ? <span className="green">설치됨</span> : <span className="red">설치 안됨</span> 
     const [publicKey, setPublicKey] = useState("");
     const [network, setNetwork] = useState("");
-    
+
+    useEffect(() => {
+        console.log("useEffect network");
+        if(klaytn.selectedAddress) { // Klaytn 에 연결되었을 경우
+            setNetwork(getNetworkName(klaytn.networkVersion));
+        }
+    },[klaytn.selectedAddress, klaytn.networkVersion]);
+
     return (
         <div className="connectPage">
             <div className="connectPage__title">
@@ -44,12 +53,14 @@ export default function Connect(){
                         지갑 주소 (공개키): { publicKey }
                     </li>
                     <li>
-                        지갑 네트워크 : {network}
+                        지갑 네트워크 : { network }
                     </li>
                 </ul>
             </div>
             <div className="connectPage__btnbar">
-                <button onClick={() => connectTo(status, setPublicKey)}>지갑 연동하기</button>
+                <Button 
+                    name="연동" 
+                    onConnect={()=>connectTo(isKlaytnInstalled, setPublicKey)} />
             </div>
         </div>
     )
